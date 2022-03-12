@@ -58,13 +58,15 @@ def sendWaPatronMail():
     try:
         _email = request.json['email']
         _name = request.json['name']
-        _message = request.json['message']
+        _phone = request.json['phone']
+        _company_name = request.json['company_name']
+        _nature_of_business = request.json['nature_of_business']
 
         msg = Message(subject="Become an outgrower request", 
                     sender=app.config.get("MAIL_USERNAME"),
                     recipients=["gassafuah@gmail.com","frankassafuah@gmail.com"],
                     body="Testing",
-                    html=render_template('message.html',name=_name, email=_email, message=_message))
+                    html=render_template('message.html',name=_name, email=_email, company_name=_company_name, phone=_phone, nature_of_business=_nature_of_business))
         mail.send(msg)
         return jsonify({'message':"Message sent", 'status':200})
 
