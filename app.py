@@ -34,14 +34,16 @@ def home():
 def sendWaInsightMail():
     try:
         _email = request.json['email']
-        _name = request.json['name']
+        _firstname = request.json['firstname']
+        _lastname = request.json['lastname']
+        _phone = request.json['phone']
         _message = request.json['message']
 
         msg = Message(subject="Contact Us Information", 
                     sender=app.config.get("MAIL_USERNAME"),
                     recipients=["gassafuah@gmail.com","frankassafuah@gmail.com"],
                     body="Testing",
-                    html=render_template('message.html', name=_name, email=_email, message=_message))
+                    html=render_template('message.html', firstname=_firstname, lastname=_lastname, phone=_phone, email=_email, message=_message))
         mail.send(msg)
         return jsonify({'message':"Message sent", 'status':200})
 
