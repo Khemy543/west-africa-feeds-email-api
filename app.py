@@ -62,7 +62,7 @@ def sendWaPatronMail():
         _company_name = request.json['company_name']
         _nature_of_business = request.json['nature_of_business']
 
-        msg = Message(subject="Become an outgrower request", 
+        msg = Message(subject="New outgrower request", 
                     sender=app.config.get("MAIL_USERNAME"),
                     recipients=["gassafuah@gmail.com","frankassafuah@gmail.com"],
                     body="Testing",
