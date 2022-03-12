@@ -31,7 +31,7 @@ def home():
 #service email test
 @app.route('/api/contact-us', methods=["POST"])
 @cross_origin(origin = '*', headers=['Content- Type', 'Authorization'])
-def sendWaInsightMail():
+def sendContactUs():
     try:
         _email = request.json['email']
         _firstname = request.json['firstname']
@@ -41,7 +41,7 @@ def sendWaInsightMail():
 
         msg = Message(subject="Contact Us Information", 
                     sender=app.config.get("MAIL_USERNAME"),
-                    recipients=["gassafuah@gmail.com","frankassafuah@gmail.com"],
+                    recipients=["gassafuah@gmail.com"],
                     body="Testing",
                     html=render_template('message.html', firstname=_firstname, lastname=_lastname, phone=_phone, email=_email, message=_message))
         mail.send(msg)
@@ -54,7 +54,7 @@ def sendWaInsightMail():
 #become an outgrower email test 
 @app.route('/api/become-an-outgrower', methods=["POST"])
 @cross_origin(origin = '*', headers=['Content- Type', 'Authorization'])
-def sendWaPatronMail():
+def sendBecomeAnOutgrower():
     try:
         _email = request.json['email']
         _name = request.json['name']
@@ -64,9 +64,9 @@ def sendWaPatronMail():
 
         msg = Message(subject="New outgrower request", 
                     sender=app.config.get("MAIL_USERNAME"),
-                    recipients=["gassafuah@gmail.com","frankassafuah@gmail.com"],
+                    recipients=["gassafuah@gmail.com"],
                     body="Testing",
-                    html=render_template('message.html',name=_name, email=_email, company_name=_company_name, phone=_phone, nature_of_business=_nature_of_business))
+                    html=render_template('outgrower.html',name=_name, email=_email, company_name=_company_name, phone=_phone, nature_of_business=_nature_of_business))
         mail.send(msg)
         return jsonify({'message':"Message sent", 'status':200})
 
