@@ -17,7 +17,7 @@ mail_settings = {
     "MAIL_PORT": 465,
     "MAIL_USE_TLS": False,
     "MAIL_USE_SSL": True,
-    "MAIL_USERNAME": 'info@westafricanfeeds.co',
+    "MAIL_USERNAME": 'mailto:westafricanfeeds@gmail.com',
     "MAIL_PASSWORD":'mllxfdbcdihrpsvm'
 }
 app.config.update(mail_settings)
@@ -41,7 +41,7 @@ def sendContactUs():
 
         msg = Message(subject="Contact Us Information", 
                     sender=app.config.get("MAIL_USERNAME"),
-                    recipients=["info@westafricanfeeds.co", "gassafuah@gmail.com"],
+                    recipients=["info@westafricanfeeds.co", "mailto:westafricanfeeds@gmail.com", "gassafuah@gmail.com"],
                     body="Testing",
                     html=render_template('message.html', firstname=_firstname, lastname=_lastname, phone=_phone, email=_email, message=_message))
         mail.send(msg)
@@ -64,7 +64,7 @@ def sendBecomeAnOutgrower():
 
         msg = Message(subject="New outgrower request", 
                     sender=app.config.get("MAIL_USERNAME"),
-                    recipients=["info@westafricanfeeds.co", "gassafuah@gmail.com"],
+                    recipients=["info@westafricanfeeds.co", "mailto:westafricanfeeds@gmail.com", "gassafuah@gmail.com"],
                     body="Testing",
                     html=render_template('outgrower.html',name=_name, email=_email, company_name=_company_name, phone=_phone, nature_of_business=_nature_of_business))
         mail.send(msg)
