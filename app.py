@@ -64,7 +64,7 @@ def sendBecomeAnOutgrower():
 
         msg = Message(subject="New outgrower request", 
                     sender=app.config.get("MAIL_USERNAME"),
-                    recipients=["info@westafricanfeeds.co", "mailto:westafricanfeeds@gmail.com"],
+                    recipients=["info@westafricanfeeds.com", "westafricanfeeds@gmail.com"],
                     body="Testing",
                     html=render_template('outgrower.html',name=_name, email=_email, company_name=_company_name, phone=_phone, nature_of_business=_nature_of_business))
         mail.send(msg)
